@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
 import './AddABeer.css'
+import { useNavigate } from 'react-router-dom'
 
-function AddABeer({ onAddABeer }) {
+function AddABeer() {
+let navigate = useNavigate()
+const [aBeer, setABeer] = useState([])
 const [formData, setformData] = useState({
     name: "",
     beer_type: "",
@@ -15,29 +18,38 @@ const handleChange = (e) => {
     setformData((formData) => ({...formData, [name]: value}))
 }
 
+const onAddABeer = (newBeer) => {
+    setABeer((aBeer) => [...aBeer, newBeer]) 
+  }
+
 
 const handleSubmit = (e) => {
     e.preventDefault();
+
     const configObj = {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
     },
-  body: JSON.stringify(formData)
+    body: JSON.stringify(formData)
    };
+
+
  fetch("http://localhost:9292/beers", configObj)
     .then((resp) => resp.json())
     .then((data) => {
-        onAddABeer(data);
-        setformData({
-          name: "",
-          beer_type: "",
-          location: "", 
-          abv: 0,
-          brewery_name:""
-        });
-    });
+        console.log(data)
+        navigate('/')
+        // onAddABeer(data);
+        // setformData({
+        //   name: "",
+        //   beer_type: "",
+        //   location: "", 
+        //   abv: 0,
+        //   brewery_name:""
+        // });
+    })
 };
 
 return (
@@ -74,6 +86,7 @@ return (
             <option value="belgian-style-ale">Belgian-Style Ale</option>
             <option value="wheat-beer">Wheat Beer</option>
             <option value="wild-sour">Wild and Sour Ale</option>
+            <option value="specialty">Specialty</option>
         </select>
         
         <label htmlFor="location">Location</label>

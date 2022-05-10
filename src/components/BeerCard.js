@@ -1,58 +1,5 @@
 
-
 import './BeerCard.css';
-
-// import Box from '@mui/material/Box';
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-// ;
-// import Stack from '@mui/material/Stack';
-
-
-// function BeerCard({ beer }) {
-//   return (
-//     <div className="beer-card">
-       
-//     <Card sx={{ minWidth: 275 }}>
-//       <CardContent>
-//          <h3 className="beer-list">
-//             {`${beer.name} `}
-//         </h3>
-//         <Typography sx={{ fontSize: 20 }}>
-//           {`${beer.beer_type.replaceAll('-', ' ')} `}
-//         </Typography>
-//         <Typography variant="h5" component="div">
-//           {`${beer.location} `}
-//         </Typography>
-//         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-//           {`ABV: ${beer.abv} `}
-//         </Typography>
-//         <Typography variant="body2">
-//           {`Brewery: ${beer.brewery_name} `}
-//           <br />
-//         </Typography>
-//       </CardContent>
-//       <CardActions>
-//         <Button size="small">Edit</Button>
-//       <Stack spacing={2}>
-//         <Rating name="half-rating" defaultValue={beer.average_rating} precision={0.5} /> Average Rating
-//       </Stack>
-//       </CardActions>
-//     </Card>
-
-  
-//     </div>
-//   );
-// }
-
-// export default BeerCard;
-
-
-
-
 import Rating from '@mui/material/Rating'
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -66,12 +13,12 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useState} from 'react'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -84,12 +31,14 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function BeerCard({ beer, user }) {
+export default function BeerCard({ beer, user, handleRemove }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+
 
   return (
     <Card className='beer-card' sx={{ maxWidth: 350 }}>
@@ -103,8 +52,8 @@ export default function BeerCard({ beer, user }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton>
-          <DeleteIcon />
+        <IconButton onClick={() => handleRemove(beer.id)}>
+          <DeleteIcon/>
         </IconButton>
         <IconButton aria-label="share">
           <EditIcon />

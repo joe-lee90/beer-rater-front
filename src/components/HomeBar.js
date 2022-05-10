@@ -6,15 +6,14 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import './HomeBar.css'
 
-export default function HomeBar({ users }) {
-  const [currentBeerType, setCurrentBeerType] = React.useState('');
-  const [currentUser, setCurrentUser] = React.useState('');
+export default function HomeBar({ users, currentBeerType, setCurrentBeerType, currentUser, setCurrentUser }) {
 
-  const handleBeerChange = (event: SelectChangeEvent) => {
+  const handleBeerChange = (event) => {
     setCurrentBeerType(event.target.value);
+    console.log(event.target.value)
   };
 
-  const handleUserChange = (event: SelectChangeEvent) => {
+  const handleUserChange = (event) => {
     setCurrentUser(event.target.value);
   };
 
@@ -23,8 +22,8 @@ export default function HomeBar({ users }) {
   });
 
   return (
-    <div>
-    <Box sx={{ minWidth: 120 }}>
+    <div className="home-bar">
+    <Box sx={{ minWidth: 300 }}>
       <FormControl fullWidth>
         <InputLabel>Beer Type</InputLabel>
         <Select
@@ -32,23 +31,24 @@ export default function HomeBar({ users }) {
           value={currentBeerType}
           label="Beer Type"
           onChange={handleBeerChange}>
-          <MenuItem value={'Pilsner'}>Pilsner</MenuItem>
-          <MenuItem value={'Dark Lager'}>Dark Lager</MenuItem>
-          <MenuItem value={'German Bock'}>German Bock</MenuItem>
-          <MenuItem value={'Brown Ale'}>Brown Ale</MenuItem>
-          <MenuItem value={'Pale Ale'}>Pale Ale</MenuItem>
-          <MenuItem value={'India Pale Ale'}>India Pale Ale</MenuItem>
-          <MenuItem value={'Porter'}>Porter</MenuItem>
-          <MenuItem value={'Stout'}>Stout</MenuItem>
-          <MenuItem value={'Belgian-Style Ale'}>Belgian-Style Ale</MenuItem>
-          <MenuItem value={'Wheat Beer'}>Wheat Beer</MenuItem>
-          <MenuItem value={'Wild & Sour Ale'}>Wild - Sour Ale</MenuItem>
-          <MenuItem value={'Specialty Beer'}>Specialty Beer</MenuItem>
+          <MenuItem value={'all'}>All</MenuItem>
+          <MenuItem value={'pilsner'}>Pilsner</MenuItem>
+          <MenuItem value={'dark-lager'}>Dark Lager</MenuItem>
+          <MenuItem value={'german-bock'}>German Bock</MenuItem>
+          <MenuItem value={'brown-ale'}>Brown Ale</MenuItem>
+          <MenuItem value={'pale-ale'}>Pale Ale</MenuItem>
+          <MenuItem value={'ipa'}>India Pale Ale</MenuItem>
+          <MenuItem value={'porter'}>Porter</MenuItem>
+          <MenuItem value={'stout'}>Stout</MenuItem>
+          <MenuItem value={'belgian-style-ale'}>Belgian-Style Ale</MenuItem>
+          <MenuItem value={'wheat-beer'}>Wheat Beer</MenuItem>
+          <MenuItem value={'wild-sour'}>Wild - Sour Ale</MenuItem>
+          <MenuItem value={'specialty'}>Specialty Beer</MenuItem>
         </Select>
       </FormControl>
     </Box>
 
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 300 }}>
       <FormControl fullWidth>
         <InputLabel>User</InputLabel>
         <Select
