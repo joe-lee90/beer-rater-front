@@ -75,6 +75,7 @@ return (
             onChange={handleChange}
             value={formData.beer_type}
         >
+            <option value=''>Select</option>
             <option value="pilsner">Pilsner</option>
             <option value="dark-lager">Dark Lager</option>
             <option value="german-bock">German Bock</option>

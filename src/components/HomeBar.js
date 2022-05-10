@@ -10,7 +10,6 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
 
   const handleBeerChange = (event) => {
     setCurrentBeerType(event.target.value);
-    console.log(event.target.value)
   };
 
   const handleUserChange = (event) => {
@@ -18,7 +17,7 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
   };
 
   let userList = users.map(user => {
-    return <MenuItem value={`${user.name}`}> {user.name}</MenuItem>;  
+    return <MenuItem key={user.id} id={user.id} value={`${user.id}`}>{user.name}</MenuItem>;  
   });
 
   return (

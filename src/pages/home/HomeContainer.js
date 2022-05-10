@@ -19,7 +19,7 @@ const HomeContainer = () => {
     let displayBeers
     if (currentBeerType === 'all'){
       displayBeers = beers.map(beer => {
-        return <BeerCard beer={beer} key={beer.id} handleRemove={handleRemove} />
+        return <BeerCard beer={beer} key={beer.id} handleRemove={handleRemove} currentUser={currentUser}/>
       })
     }
     else{
@@ -27,7 +27,7 @@ const HomeContainer = () => {
         return beer.beer_type.toUpperCase() === currentBeerType.toUpperCase()
       })
       displayBeers = filteredBeers.map(beer => {
-        return <BeerCard beer={beer} key={beer.id} />
+        return <BeerCard beer={beer} key={beer.id} handleRemove={handleRemove} currentUser={currentUser} />
       })
     }
 
@@ -49,9 +49,9 @@ const HomeContainer = () => {
       .then(data => setUsers(data))
     }, [])
     
-    const displayUsers = users.map(user => {
-      return <BeerCard user={user} key={user.id}  />
-    })
+    // const displayUsers = users.map(user => {
+    //   return <BeerCard user={user} key={user.id}  />
+    // })
 
     const onAddABeer = (newBeer) => {
         setBeers((beers) => [...beers, newBeer]) 

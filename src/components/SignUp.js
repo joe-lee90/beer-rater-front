@@ -1,8 +1,9 @@
 import './SignUp.css';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
-
+    const navigate = useNavigate()
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
     const [user, setUser] = useState([])
@@ -30,6 +31,7 @@ export default function SignUp() {
             
             setUser(user.concat(newUser))
             // history.push(`/users/${newUser.id}`)
+            navigate('/')
           });
       }
 

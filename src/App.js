@@ -4,6 +4,7 @@ import MainNavBar from './components/MainNavBar';
 import AddABeer from './components/AddABeer';
 import SignUp from './components/SignUp';
 import {Route, Routes} from "react-router-dom";
+import SingleBeer from './pages/singlebeer/SingleBeer';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' exact element={<HomeContainer/>}/>
         <Route path='/add-a-beer' exact element={<AddABeer/>}/>
         <Route path='/sign-up' exact element={<SignUp/>}/>
+        <Route path='/beers/:id' exact element={<SingleBeer/>}/>
       </Routes>
     </div>
   );
