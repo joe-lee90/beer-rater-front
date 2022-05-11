@@ -3,6 +3,14 @@
   margin: 30px;
 }
 
+.beer-card:hover {
+  box-shadow: 0 0 20px rgba(18, 20, 23, 0.9);
+}
+
 .avg-rating {
   margin-left: 25px;
+}
+
+.beer-card-header:hover {
+  cursor: pointer;
 }

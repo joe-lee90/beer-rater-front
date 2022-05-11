@@ -5,6 +5,7 @@ import AddABeer from './components/AddABeer';
 import SignUp from './components/SignUp';
 import {Route, Routes} from "react-router-dom";
 import SingleBeer from './pages/singlebeer/SingleBeer';
+import EditBeer from './pages/editBeer/EditBeer'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/add-a-beer' exact element={<AddABeer/>}/>
         <Route path='/sign-up' exact element={<SignUp/>}/>
         <Route path='/beers/:id' exact element={<SingleBeer/>}/>
+        <Route path='/edit/:id' exact element={<EditBeer/>}/>
       </Routes>
     </div>
   );

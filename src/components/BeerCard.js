@@ -1,4 +1,4 @@
-
+import {useEffect} from 'react'
 import './BeerCard.css';
 import Rating from '@mui/material/Rating'
 import * as React from 'react';
@@ -35,9 +35,10 @@ export default function BeerCard({ beer, currentUser, handleRemove }) {
     setExpanded(!expanded);
   };
 
-const postNewRating = (currentUserId, rating) => {
-  console.log(currentUserId, rating, beer.id)
-  fetch(`http://localhost:9292/ratings`, {
+ const postNewRating = (currentUserId, rating) => {
+  console.log(rating) 
+  if (rating){
+    fetch(`http://localhost:9292/ratings`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -49,7 +50,11 @@ const postNewRating = (currentUserId, rating) => {
       beer_id: beer.id,
       user_id: currentUserId
     })
-  }) // Rating.create(user_id: currentUserId, beer_id: beer.id, rating: rating)
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+
+}
 }
 
 const handleRatingClick = (e) => {
@@ -59,6 +64,7 @@ const handleRatingClick = (e) => {
   return (
     <Card className='beer-card' sx={{ maxWidth: 350 }}>
       <CardHeader
+      className='beer-card-header'
       onClick={()=> navigate(`beers/${beer.id}`)}
         title={beer.name}
         subheader={beer.beer_type.replaceAll('-', ' ')}
@@ -73,7 +79,7 @@ const handleRatingClick = (e) => {
           <DeleteIcon/>
         </IconButton>
         <IconButton aria-label="share">
-          <EditIcon />
+          <EditIcon onClick={()=> navigate(`edit/${beer.id}`)}/>
         </IconButton>
         <Rating name="half-rating" className='avg-rating' defaultValue={beer.average_rating} precision={0.5} readOnly/>
         <ExpandMore
