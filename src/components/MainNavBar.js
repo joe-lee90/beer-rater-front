@@ -13,7 +13,12 @@ export default function MainNavBar() {
   
 
   return (
-    <Tabs value={value} onChange={handleChange} aria-label="disabled tabs example">
+    <Tabs 
+      value={value} 
+      onChange={handleChange} 
+      textColor="secondary"
+      indicatorColor='secondary'
+      aria-label="disabled tabs example">
       <LinkContainer to='/'>
         <Tab label="Home"/>
       </LinkContainer>

@@ -58,10 +58,12 @@ const postNewRating = (currentUserId, rating) => {
 
 const handleRatingClick = (e) => {
   currentUser ? postNewRating(currentUser, e.target.value) : alert("Please Select a User!")
+  console.log(postNewRating(currentUser, e.target))
 }
 
   return (
-    <Card className='beer-card' sx={{ maxWidth: 350 }}>
+    <div className="card-container">
+    <Card className='beer-card' sx={{ maxWidth: 350, border: 1 }}>
       <CardHeader
       className='beer-card-header'
       onClick={()=> navigate(`beers/${beer.id}`)}
@@ -103,5 +105,6 @@ const handleRatingClick = (e) => {
         </CardContent>
       </Collapse>
     </Card>
+    </div>
   );
 }

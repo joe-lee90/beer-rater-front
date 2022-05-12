@@ -1,4 +1,9 @@
+.single-beer-container {
+  margin: auto;
+}
+
 .rating-list img {
+  border: 1px solid black;
   max-width: 100px;
   border-radius: 50%;
 }
@@ -8,17 +13,26 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 31px;
   margin-bottom: 30px;
-  position: relative; left:18vw; top: auto;
+  position: relative; left:20vw; top: auto;
+  color:rgba(130, 133, 2, 0.377);
+  font-size: 30px;
+	-webkit-text-stroke: 1px black; 
 }
 
 .rating-list p {
   font-size: 1.5rem;
   margin-left: 20px;
+  position: relative; 
+  color:rgba(130, 133, 2, 0.377);
+  font-size: 20px;
+	-webkit-text-stroke: 1px black; 
 }
 
 .one-beer-image {
+  border-radius: 5px;
+  border: 1px solid;
   max-width: 40vw;
   max-height: 60vh;
 }
@@ -26,5 +40,15 @@
 .single-beer-image {
   align-items: center;
   margin-top: 10px;
-  position:absolute; left:15vw; top: auto;
+  position: absolute; left:18vw; top: auto;
+}
+
+.single-beer-title {
+  color:rgba(130, 133, 2, 0.377);
+  font-size: 30px;
+	-webkit-text-stroke: 1px black; 
+}
+
+.avg-rating {
+  background-color:rgba(207, 20, 20, 0.377);
 }

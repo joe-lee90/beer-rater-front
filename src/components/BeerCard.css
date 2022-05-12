@@ -1,8 +1,17 @@
+.card-container {
+  position: relative;
+}
+
 .beer-card {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 350px;
   max-height: fit-content;
   margin: 30px;
-  color: yellow;
+  color: rgb(0, 0, 0);
+
 }
 
 .beer-card:hover {

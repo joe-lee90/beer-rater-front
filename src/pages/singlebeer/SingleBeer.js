@@ -33,9 +33,9 @@ const SingleBeer = () => {
   })
 
   return (
-    <div>
+    <div className='single-beer-container'>
     <div className="single-beer-image" >
-      <h1>{oneBeer.name}</h1>
+      <h1 className="single-beer-title">{oneBeer.name}</h1>
       <img className='one-beer-image' src={oneBeer.image} alt={oneBeer.name} />
       </div>
       <div>

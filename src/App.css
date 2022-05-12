@@ -35,6 +35,7 @@
   color: rgba(201, 113, 42, 0.952);
   font-family: Blippo, fantasy;
   font-size: 50px; 
+	-webkit-text-stroke: 2px black;
 }
 
 .App-link {

@@ -34,10 +34,9 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
 
   return (
     <div className="home-bar">
-    
-    <Box className="home-box" sx={{ minWidth: 300 }}>
+    <Box sx={{ minWidth: 300, border: 'secondary.main' }} >
       <FormControl fullWidth>
-        <InputLabel>Beer Type</InputLabel>
+        <InputLabel >Beer Type</InputLabel>
         <Select
           id="beer-type-select"
           value={currentBeerType}
@@ -72,7 +71,7 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
       </FormControl>
       
     </Box>
-    <Avatar className="avatar" src={selectedUser.image} alt={selectedUser.name} />
+    <Avatar sx={{ border: 1}} className="avatar" src={selectedUser.image} alt={selectedUser.name} />
     </div>
   );
 };

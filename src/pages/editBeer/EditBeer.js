@@ -114,7 +114,7 @@ fetch(`http://localhost:9292/beers/${params.id}`, configObj)
           value={beerData.abv}
       />
 
-      <label htmlFor="image">Image</label>
+      <label htmlFor="image" className="form-text">Image</label>
       <input
           className="beer-form"
           type="text"

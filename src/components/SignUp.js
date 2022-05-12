@@ -34,7 +34,7 @@ export default function SignUp() {
 
     return (
       <>
-        <h1 className="text-3xl mb-3">New User</h1>
+        <h1 id="new-user-title" className="text-3xl mb-3">New User</h1>
         <form
           onSubmit={handleSubmit}
           className="text-2xl flex-col space-y-8 items-center"
@@ -54,7 +54,7 @@ export default function SignUp() {
           </fieldset>
           <fieldset className="flex flex-grow mr-2 my-2">
             <label className="text-right w-28" htmlFor="image">
-              Image Url
+              Image
             </label>
             <input
               type="text"
