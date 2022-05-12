@@ -1,16 +1,25 @@
 .beer-card {
   width: 350px;
+  max-height: fit-content;
   margin: 30px;
+  color: yellow;
 }
 
 .beer-card:hover {
-  box-shadow: 0 0 20px rgba(18, 20, 23, 0.9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
-.avg-rating {
-  margin-left: 25px;
+.user-rating {
+  margin-left: 10px;
 }
 
 .beer-card-header:hover {
   cursor: pointer;
 }
+.card-image {
+  max-width: 20vw;
+  max-height: 25vh;
+  object-fit: cover;
+  
+}
+

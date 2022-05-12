@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+
 import './BeerCard.css';
 import Rating from '@mui/material/Rating'
 import * as React from 'react';
@@ -8,7 +8,6 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -31,11 +30,12 @@ const ExpandMore = styled((props) => {
 export default function BeerCard({ beer, currentUser, handleRemove }) {
   const [expanded, setExpanded] = React.useState(false);
   const navigate = useNavigate()
-  const handleExpandClick = () => {
+  const handleExpandClick = (e) => {
     setExpanded(!expanded);
+    console.log(e)
   };
 
- const postNewRating = (currentUserId, rating) => {
+const postNewRating = (currentUserId, rating) => {
   console.log(rating) 
   if (rating){
     fetch(`http://localhost:9292/ratings`, {
@@ -54,8 +54,7 @@ export default function BeerCard({ beer, currentUser, handleRemove }) {
   .then(res => res.json())
   .then(data => console.log(data))
 
-}
-}
+}}
 
 const handleRatingClick = (e) => {
   currentUser ? postNewRating(currentUser, e.target.value) : alert("Please Select a User!")
@@ -69,6 +68,7 @@ const handleRatingClick = (e) => {
         title={beer.name}
         subheader={beer.beer_type.replaceAll('-', ' ')}
       />
+      <img className="card-image" src={beer.image} alt={beer.name}/>
       <CardContent>
         <Typography color="text.secondary">
           {/* Beer info here */}
@@ -81,7 +81,8 @@ const handleRatingClick = (e) => {
         <IconButton aria-label="share">
           <EditIcon onClick={()=> navigate(`edit/${beer.id}`)}/>
         </IconButton>
-        <Rating name="half-rating" className='avg-rating' defaultValue={beer.average_rating} precision={0.5} readOnly/>
+          <h4>Rate Beer: </h4>
+          <Rating name="half-rating" className='user-rating' defaultValue="0" precision={0.5} onClick={handleRatingClick}/>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -97,8 +98,8 @@ const handleRatingClick = (e) => {
           <p>{`Brewery: ${beer.brewery_name} `}</p>
           <p>{`${beer.location} `}</p>
           <p>{`ABV: ${beer.abv} `}</p>
-          <h4>Your rating:</h4>
-          <Rating name="half-rating" defaultValue="0" precision={0.5} onClick={handleRatingClick}/>
+          <h4>Average Rating</h4>
+          <Rating name="half-rating" className='avg-rating' defaultValue={beer.average_rating} precision={0.5} readOnly/>
         </CardContent>
       </Collapse>
     </Card>

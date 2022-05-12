@@ -1,12 +1,16 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import {useEffect, useState} from 'react'
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import './HomeBar.css'
 
 export default function HomeBar({ users, currentBeerType, setCurrentBeerType, currentUser, setCurrentUser }) {
+
+  const [selectedUser, setSelectedUser] = useState([])
 
   const handleBeerChange = (event) => {
     setCurrentBeerType(event.target.value);
@@ -20,9 +24,18 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
     return <MenuItem key={user.id} id={user.id} value={`${user.id}`}>{user.name}</MenuItem>;  
   });
 
+  useEffect(() => {
+    fetch(`http://localhost:9292/users/${currentUser}`)
+    .then(res => res.json())
+    .then(data => setSelectedUser(data))
+  }, [currentUser]);
+
+  console.log(currentUser);
+
   return (
     <div className="home-bar">
-    <Box sx={{ minWidth: 300 }}>
+    
+    <Box className="home-box" sx={{ minWidth: 300 }}>
       <FormControl fullWidth>
         <InputLabel>Beer Type</InputLabel>
         <Select
@@ -57,7 +70,9 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
           {userList}
         </Select>
       </FormControl>
+      
     </Box>
+    <Avatar className="avatar" src={selectedUser.image} alt={selectedUser.name} />
     </div>
   );
 };

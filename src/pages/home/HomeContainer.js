@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import BeerCard from '../../components/BeerCard'
 import HomeBar from '../../components/HomeBar'
-import AddABeer from '../../components/AddABeer'
 import './HomeContainer.css'
 
 const HomeContainer = () => {
@@ -15,6 +14,24 @@ const HomeContainer = () => {
       .then(res => res.json())
       .then(data => setBeers(data))
     }, [])
+
+    useEffect(() => {
+      fetch('http://localhost:9292/users')
+      .then(res => res.json())
+      .then(data => setUsers(data))
+    }, [])
+
+    function handleRemove(id){
+      fetch(`http://localhost:9292/beers/${id}`, {
+        method: 'DELETE'
+      })
+      const newBeers = beers.filter(beer => {
+        if (beer.id !== id){
+          return beer
+        }
+      })
+      setBeers(newBeers)
+    }
 
     let displayBeers
     if (currentBeerType === 'all'){
@@ -30,29 +47,7 @@ const HomeContainer = () => {
         return <BeerCard beer={beer} key={beer.id} handleRemove={handleRemove} currentUser={currentUser} />
       })
     }
-
-    function handleRemove(id){
-      fetch(`http://localhost:9292/beers/${id}`, {
-        method: 'DELETE'
-      })
-      const newBeers = beers.filter(beer => {
-        if (beer.id !== id){
-          return beer
-        }
-      })
-      setBeers(newBeers)
-    }
-
-    useEffect(() => {
-      fetch('http://localhost:9292/users')
-      .then(res => res.json())
-      .then(data => setUsers(data))
-    }, [])
     
-    // const displayUsers = users.map(user => {
-    //   return <BeerCard user={user} key={user.id}  />
-    // })
-
     const onAddABeer = (newBeer) => {
         setBeers((beers) => [...beers, newBeer]) 
       }

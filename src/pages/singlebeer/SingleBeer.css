@@ -6,13 +6,25 @@
 .rating-list {
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   margin-top: 30px;
   margin-bottom: 30px;
+  position: relative; left:18vw; top: auto;
 }
 
 .rating-list p {
   font-size: 1.5rem;
   margin-left: 20px;
+}
+
+.one-beer-image {
+  max-width: 40vw;
+  max-height: 60vh;
+}
+
+.single-beer-image {
+  align-items: center;
+  margin-top: 10px;
+  position:absolute; left:15vw; top: auto;
 }

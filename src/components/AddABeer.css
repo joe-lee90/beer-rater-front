@@ -1,0 +1,28 @@
+
+.add-beer-title {
+    color:rgba(130, 133, 2, 0.377);    
+}
+.beer-form {
+    background-color: rgba(101, 195, 219, 0.589);
+    color:rgb(45, 9, 175); 
+    width: 350px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: left;
+}
+
+.beer-form:hover {
+    box-shadow: 0 0 20px rgba(202, 3, 186, 0.842);
+}
+
+.form-text {
+    color:rgb(245, 0, 212);
+    font-weight: 800;
+}
+
+.submit-button {
+    color:rgb(255,0, 212);
+    background-color:rgba(192, 181, 30, 0.363)
+}

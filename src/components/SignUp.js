@@ -10,7 +10,6 @@ export default function SignUp() {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-  
       addUser({
         name,
         image
@@ -28,9 +27,7 @@ export default function SignUp() {
         })
           .then(res => res.json())
           .then(newUser => {
-            
             setUser(user.concat(newUser))
-            // history.push(`/users/${newUser.id}`)
             navigate('/')
           });
       }
@@ -68,7 +65,6 @@ export default function SignUp() {
               onChange={(e) => setImage(e.target.value)}
             />
           </fieldset>
-  
           <button
             className="block relative lg:-top-2 w-100 left-1 px-4 py-2 text-center bg-green-600 text-white"
             type="submit"

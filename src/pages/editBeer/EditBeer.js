@@ -8,7 +8,8 @@ const EditBeer = () => {
       beer_type: "",
       location: "", 
       abv: 0,
-      brewery_name:""
+      brewery_name:"",
+      image: "",
   })
   const params = useParams()
   const navigate = useNavigate()
@@ -29,37 +30,29 @@ const EditBeer = () => {
         Accept: "application/json",
     },
     body: JSON.stringify(beerData)
-   };
+  };
 
-
- fetch(`http://localhost:9292/beers/${params.id}`, configObj)
+fetch(`http://localhost:9292/beers/${params.id}`, configObj)
     .then((resp) => resp.json())
     .then((data) => {
         console.log(data)
         navigate('/')
-        // onAddABeer(data);
-        // setformData({
-        //   name: "",
-        //   beer_type: "",
-        //   location: "", 
-        //   abv: 0,
-        //   brewery_name:""
-        // });
     })
 };
   const handleChange = (e) => {
-    const { name,  value} = e.target
+    const { name,  value } = e.target
     setBeerData((beerData) => ({...beerData, [name]: value}))
   }
     
   return (
     <div>
+    <section className="add-beer-form">
     <form className="form" autoComplete="off" onSubmit={handleSubmit}>
-      <h2>Edit Beer</h2>
+      <h2 className="add-beer-title">Edit Beer</h2>
 
-      <label htmlFor="name">Name</label>
+      <label htmlFor="name" className="form-text">Name</label>
       <input
-          className="beer_form"
+          className="beer-form"
           type="text"
           id="name"
           name="name"
@@ -67,9 +60,9 @@ const EditBeer = () => {
           value={beerData.name}
       />
 
-      <label htmlFor="beer_type">Beer Type</label>
+      <label htmlFor="beer_type" className="form-text">Beer Type</label>
       <select
-          className="beer_form"
+          className="beer-form"
           name="beer_type"
           id="beer_type"
           onChange={handleChange}
@@ -90,9 +83,9 @@ const EditBeer = () => {
           <option value="specialty">Specialty</option>
       </select>
       
-      <label htmlFor="location">Location</label>
+      <label htmlFor="location" className="form-text">Location</label>
       <input
-          className="beer_form"
+          className="beer-form"
           type="text"
           id="location"
           name="location"
@@ -100,9 +93,9 @@ const EditBeer = () => {
           value={beerData.location}
       />
 
-      <label htmlFor="brewery_name">Brewery</label>
+      <label htmlFor="brewery_name" className="form-text">Brewery</label>
       <input
-          className="beer_form"
+          className="beer-form"
           type="text"
           id="brewery_name"
           name="brewery_name"
@@ -110,9 +103,9 @@ const EditBeer = () => {
           value={beerData.brewery_name}
       />
 
-      <label htmlFor="abv">ABV</label>
+      <label htmlFor="abv" className="form-text">ABV</label>
       <input
-          className="beer_form"
+          className="beer-form"
           type="number"
           step="0.1"
           id="abv"
@@ -121,18 +114,19 @@ const EditBeer = () => {
           value={beerData.abv}
       />
 
-      {/* <label htmlFor="beer_image">Image</label>
+      <label htmlFor="image">Image</label>
       <input
-          className="beer_form"
+          className="beer-form"
           type="text"
-          id="beer_image"
-          name="beer_image"
+          id="image"
+          name="image"
           onChange={handleChange}
-          value={beerData.beer_image}
-      /> */}
+          value={beerData.image}
+      />
 
-      <button className="search" type="submit" >Save Beer</button>
+      <button className="submit-button" type="submit" >Save Beer</button>
 </form>
+</section>
 </div>
   )
 }

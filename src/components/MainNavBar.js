@@ -2,9 +2,6 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import './MainNavBar.css';
-import { Link, Navigate }  from 'react-router-dom'
-import HomeContainer from '../pages/home/HomeContainer';
-import {useEffect } from 'react'
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default function MainNavBar() {
@@ -13,7 +10,6 @@ export default function MainNavBar() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  
   
 
   return (

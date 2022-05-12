@@ -10,7 +10,7 @@ import EditBeer from './pages/editBeer/EditBeer'
 function App() {
   return (
     <div className="App">
-      <h1>Beer Rater</h1>
+      <h1 className="AppTitle">Beer Rater</h1>
       <MainNavBar/>
       <Routes>
         <Route path='/' exact element={<HomeContainer/>}/>
