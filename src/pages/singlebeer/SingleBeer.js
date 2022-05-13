@@ -27,7 +27,7 @@ const SingleBeer = () => {
       <div key={rating.name} className='rating-list'>
         <img src={rating.image} alt={rating.name}></img>
         <p>{rating.name} <br/>
-        <Rating name="half-rating" className='avg-rating' defaultValue={rating.rating_value} precision={0.5} readOnly/></p>
+        <Rating sx={{ border: 1 }} name="half-rating" className='rating' defaultValue={rating.rating_value} precision={0.5} readOnly/></p>
       </div>
       )
   })
@@ -38,7 +38,7 @@ const SingleBeer = () => {
       <h1 className="single-beer-title">{oneBeer.name}</h1>
       <img className='one-beer-image' src={oneBeer.image} alt={oneBeer.name} />
       </div>
-      <div>
+      <div className='rating-container'>
       <h1 className='rating-list'>
       Ratings
       </h1>

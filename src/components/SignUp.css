@@ -1,0 +1,11 @@
+.sign-up-form {
+    background-color: rgba(26, 94, 241, 0.247);
+    color:rgb(0, 0, 0); 
+    width: 350px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: left;
+    border-radius: 5;
+}

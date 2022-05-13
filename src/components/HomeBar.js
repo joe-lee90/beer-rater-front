@@ -58,7 +58,6 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
         </Select>
       </FormControl>
     </Box>
-
     <Box sx={{ minWidth: 300 }}>
       <FormControl fullWidth>
         <InputLabel>User</InputLabel>
@@ -69,7 +68,6 @@ export default function HomeBar({ users, currentBeerType, setCurrentBeerType, cu
           {userList}
         </Select>
       </FormControl>
-      
     </Box>
     <Avatar sx={{ border: 1}} className="avatar" src={selectedUser.image} alt={selectedUser.name} />
     </div>

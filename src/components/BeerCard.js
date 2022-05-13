@@ -15,11 +15,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
-})(({ theme, expand }) => ({
+  })(({ theme, expand }) => ({
   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
   marginLeft: 'auto',
   transition: theme.transitions.create('transform', {
@@ -68,12 +67,10 @@ const handleRatingClick = (e) => {
       className='beer-card-header'
       onClick={()=> navigate(`beers/${beer.id}`)}
         title={beer.name}
-        subheader={beer.beer_type.replaceAll('-', ' ')}
-      />
+        subheader={beer.beer_type.replaceAll('-', ' ')} />
       <img className="card-image" src={beer.image} alt={beer.name}/>
       <CardContent>
         <Typography color="text.secondary">
-          {/* Beer info here */}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -89,14 +86,12 @@ const handleRatingClick = (e) => {
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more"
-        >
+          aria-label="show more">
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          {/* {put user rating here} */}
           <p>{`Brewery: ${beer.brewery_name} `}</p>
           <p>{`${beer.location} `}</p>
           <p>{`ABV: ${beer.abv} `}</p>

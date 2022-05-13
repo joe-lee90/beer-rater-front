@@ -3,7 +3,7 @@ import {useParams, useNavigate} from 'react-router-dom'
 import './EditBeer.css'
 
 const EditBeer = () => {
-    const [beerData, setBeerData] = useState({
+  const [beerData, setBeerData] = useState({
       name: "",
       beer_type: "",
       location: "", 
@@ -32,24 +32,24 @@ const EditBeer = () => {
     body: JSON.stringify(beerData)
   };
 
-fetch(`http://localhost:9292/beers/${params.id}`, configObj)
+  fetch(`http://localhost:9292/beers/${params.id}`, configObj)
     .then((resp) => resp.json())
     .then((data) => {
         console.log(data)
         navigate('/')
     })
-};
+  };
+
   const handleChange = (e) => {
     const { name,  value } = e.target
     setBeerData((beerData) => ({...beerData, [name]: value}))
   }
     
   return (
-    <div>
-    <section className="add-beer-form">
+<div>
+  <section className="add-beer-form">
     <form className="form" autoComplete="off" onSubmit={handleSubmit}>
       <h2 className="add-beer-title">Edit Beer</h2>
-
       <label htmlFor="name" className="form-text">Name</label>
       <input
           className="beer-form"
@@ -57,32 +57,28 @@ fetch(`http://localhost:9292/beers/${params.id}`, configObj)
           id="name"
           name="name"
           onChange={handleChange}
-          value={beerData.name}
-      />
-
+          value={beerData.name}/>
       <label htmlFor="beer_type" className="form-text">Beer Type</label>
       <select
           className="beer-form"
           name="beer_type"
           id="beer_type"
           onChange={handleChange}
-          value={beerData.beer_type}
-      >
-          <option value=''>Select</option>
-          <option value="pilsner">Pilsner</option>
-          <option value="dark-lager">Dark Lager</option>
-          <option value="german-bock">German Bock</option>
-          <option value="brown-ale">Brown Ale</option>
-          <option value="pale-ale">Pale Ale</option>
-          <option value="ipa">India Pale Ale</option>
-          <option value="porter">Porter</option>
-          <option value="stout">Stout</option>
-          <option value="belgian-style-ale">Belgian-Style Ale</option>
-          <option value="wheat-beer">Wheat Beer</option>
-          <option value="wild-sour">Wild and Sour Ale</option>
-          <option value="specialty">Specialty</option>
+          value={beerData.beer_type}>
+            <option value=''>Select</option>
+            <option value="pilsner">Pilsner</option>
+            <option value="dark-lager">Dark Lager</option>
+            <option value="german-bock">German Bock</option>
+            <option value="brown-ale">Brown Ale</option>
+            <option value="pale-ale">Pale Ale</option>
+            <option value="ipa">India Pale Ale</option>
+            <option value="porter">Porter</option>
+            <option value="stout">Stout</option>
+            <option value="belgian-style-ale">Belgian-Style Ale</option>
+            <option value="wheat-beer">Wheat Beer</option>
+            <option value="wild-sour">Wild and Sour Ale</option>
+            <option value="specialty">Specialty</option>
       </select>
-      
       <label htmlFor="location" className="form-text">Location</label>
       <input
           className="beer-form"
@@ -90,9 +86,7 @@ fetch(`http://localhost:9292/beers/${params.id}`, configObj)
           id="location"
           name="location"
           onChange={handleChange}
-          value={beerData.location}
-      />
-
+          value={beerData.location}/>
       <label htmlFor="brewery_name" className="form-text">Brewery</label>
       <input
           className="beer-form"
@@ -100,9 +94,7 @@ fetch(`http://localhost:9292/beers/${params.id}`, configObj)
           id="brewery_name"
           name="brewery_name"
           onChange={handleChange}
-          value={beerData.brewery_name}
-      />
-
+          value={beerData.brewery_name}/>
       <label htmlFor="abv" className="form-text">ABV</label>
       <input
           className="beer-form"
@@ -111,9 +103,7 @@ fetch(`http://localhost:9292/beers/${params.id}`, configObj)
           id="abv"
           name="abv"
           onChange={handleChange}
-          value={beerData.abv}
-      />
-
+          value={beerData.abv} />
       <label htmlFor="image" className="form-text">Image</label>
       <input
           className="beer-form"
@@ -121,12 +111,10 @@ fetch(`http://localhost:9292/beers/${params.id}`, configObj)
           id="image"
           name="image"
           onChange={handleChange}
-          value={beerData.image}
-      />
-
+          value={beerData.image}/>
       <button className="submit-button" type="submit" >Save Beer</button>
-</form>
-</section>
+    </form>
+  </section>
 </div>
   )
 }

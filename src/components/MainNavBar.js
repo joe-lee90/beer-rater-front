@@ -16,8 +16,8 @@ export default function MainNavBar() {
     <Tabs 
       value={value} 
       onChange={handleChange} 
-      textColor="secondary"
-      indicatorColor='secondary'
+      textColor="primary"
+      indicatorColor='primary'
       aria-label="disabled tabs example">
       <LinkContainer to='/'>
         <Tab label="Home"/>
